@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="SelectCarInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectCarInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelectCarInfoResult" type="tns:ArrayOfCars" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCars">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Cars" nillable="true" type="tns:Cars" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Cars">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CarName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CarModel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegisterId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Reputition" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ChargePercent" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Lat" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Long" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="TargetLat" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="TargetLong" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="IsReserved" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IsPaired" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PairedCarId" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FindNearestCar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="altitude" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="latitude" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="chargePercentage" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindNearestCarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindNearestCarResult" type="tns:ArrayOfCars" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCarInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="latitude" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="longitute" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="latitudeTarget" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="longituteTarget" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCarInfoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SetCarReserved">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetCarReservedResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SetCarPaired">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IDTarget" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetCarPairedResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getLocationCar1">
+        <s:complexType />
+      </s:element>
+      <s:element name="getLocationCar1Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getLocationCar1Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getBatteryCharge">
+        <s:complexType />
+      </s:element>
+      <s:element name="getBatteryChargeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getBatteryChargeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArrayOfCars" nillable="true" type="tns:ArrayOfCars" />
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SelectCarInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectCarInfo" />
+  </wsdl:message>
+  <wsdl:message name="SelectCarInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectCarInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindNearestCarSoapIn">
+    <wsdl:part name="parameters" element="tns:FindNearestCar" />
+  </wsdl:message>
+  <wsdl:message name="FindNearestCarSoapOut">
+    <wsdl:part name="parameters" element="tns:FindNearestCarResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCarInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateCarInfo" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCarInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateCarInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetCarReservedSoapIn">
+    <wsdl:part name="parameters" element="tns:SetCarReserved" />
+  </wsdl:message>
+  <wsdl:message name="SetCarReservedSoapOut">
+    <wsdl:part name="parameters" element="tns:SetCarReservedResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetCarPairedSoapIn">
+    <wsdl:part name="parameters" element="tns:SetCarPaired" />
+  </wsdl:message>
+  <wsdl:message name="SetCarPairedSoapOut">
+    <wsdl:part name="parameters" element="tns:SetCarPairedResponse" />
+  </wsdl:message>
+  <wsdl:message name="getLocationCar1SoapIn">
+    <wsdl:part name="parameters" element="tns:getLocationCar1" />
+  </wsdl:message>
+  <wsdl:message name="getLocationCar1SoapOut">
+    <wsdl:part name="parameters" element="tns:getLocationCar1Response" />
+  </wsdl:message>
+  <wsdl:message name="getBatteryChargeSoapIn">
+    <wsdl:part name="parameters" element="tns:getBatteryCharge" />
+  </wsdl:message>
+  <wsdl:message name="getBatteryChargeSoapOut">
+    <wsdl:part name="parameters" element="tns:getBatteryChargeResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelectCarInfoHttpGetIn">
+    <wsdl:part name="ID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectCarInfoHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCars" />
+  </wsdl:message>
+  <wsdl:message name="FindNearestCarHttpGetIn">
+    <wsdl:part name="altitude" type="s:string" />
+    <wsdl:part name="latitude" type="s:string" />
+    <wsdl:part name="chargePercentage" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindNearestCarHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCars" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCarInfoHttpGetIn">
+    <wsdl:part name="ID" type="s:string" />
+    <wsdl:part name="latitude" type="s:string" />
+    <wsdl:part name="longitute" type="s:string" />
+    <wsdl:part name="latitudeTarget" type="s:string" />
+    <wsdl:part name="longituteTarget" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCarInfoHttpGetOut" />
+  <wsdl:message name="SetCarReservedHttpGetIn">
+    <wsdl:part name="ID" type="s:string" />
+    <wsdl:part name="status" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SetCarReservedHttpGetOut" />
+  <wsdl:message name="SetCarPairedHttpGetIn">
+    <wsdl:part name="ID" type="s:string" />
+    <wsdl:part name="IDTarget" type="s:string" />
+    <wsdl:part name="status" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SetCarPairedHttpGetOut" />
+  <wsdl:message name="getLocationCar1HttpGetIn" />
+  <wsdl:message name="getLocationCar1HttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getBatteryChargeHttpGetIn" />
+  <wsdl:message name="getBatteryChargeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectCarInfoHttpPostIn">
+    <wsdl:part name="ID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SelectCarInfoHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCars" />
+  </wsdl:message>
+  <wsdl:message name="FindNearestCarHttpPostIn">
+    <wsdl:part name="altitude" type="s:string" />
+    <wsdl:part name="latitude" type="s:string" />
+    <wsdl:part name="chargePercentage" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindNearestCarHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCars" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCarInfoHttpPostIn">
+    <wsdl:part name="ID" type="s:string" />
+    <wsdl:part name="latitude" type="s:string" />
+    <wsdl:part name="longitute" type="s:string" />
+    <wsdl:part name="latitudeTarget" type="s:string" />
+    <wsdl:part name="longituteTarget" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCarInfoHttpPostOut" />
+  <wsdl:message name="SetCarReservedHttpPostIn">
+    <wsdl:part name="ID" type="s:string" />
+    <wsdl:part name="status" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SetCarReservedHttpPostOut" />
+  <wsdl:message name="SetCarPairedHttpPostIn">
+    <wsdl:part name="ID" type="s:string" />
+    <wsdl:part name="IDTarget" type="s:string" />
+    <wsdl:part name="status" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SetCarPairedHttpPostOut" />
+  <wsdl:message name="getLocationCar1HttpPostIn" />
+  <wsdl:message name="getLocationCar1HttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getBatteryChargeHttpPostIn" />
+  <wsdl:message name="getBatteryChargeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="WebService1Soap">
+    <wsdl:operation name="SelectCarInfo">
+      <wsdl:input message="tns:SelectCarInfoSoapIn" />
+      <wsdl:output message="tns:SelectCarInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindNearestCar">
+      <wsdl:input message="tns:FindNearestCarSoapIn" />
+      <wsdl:output message="tns:FindNearestCarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCarInfo">
+      <wsdl:input message="tns:UpdateCarInfoSoapIn" />
+      <wsdl:output message="tns:UpdateCarInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetCarReserved">
+      <wsdl:input message="tns:SetCarReservedSoapIn" />
+      <wsdl:output message="tns:SetCarReservedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetCarPaired">
+      <wsdl:input message="tns:SetCarPairedSoapIn" />
+      <wsdl:output message="tns:SetCarPairedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getLocationCar1">
+      <wsdl:input message="tns:getLocationCar1SoapIn" />
+      <wsdl:output message="tns:getLocationCar1SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBatteryCharge">
+      <wsdl:input message="tns:getBatteryChargeSoapIn" />
+      <wsdl:output message="tns:getBatteryChargeSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="WebService1HttpGet">
+    <wsdl:operation name="SelectCarInfo">
+      <wsdl:input message="tns:SelectCarInfoHttpGetIn" />
+      <wsdl:output message="tns:SelectCarInfoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindNearestCar">
+      <wsdl:input message="tns:FindNearestCarHttpGetIn" />
+      <wsdl:output message="tns:FindNearestCarHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCarInfo">
+      <wsdl:input message="tns:UpdateCarInfoHttpGetIn" />
+      <wsdl:output message="tns:UpdateCarInfoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetCarReserved">
+      <wsdl:input message="tns:SetCarReservedHttpGetIn" />
+      <wsdl:output message="tns:SetCarReservedHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetCarPaired">
+      <wsdl:input message="tns:SetCarPairedHttpGetIn" />
+      <wsdl:output message="tns:SetCarPairedHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getLocationCar1">
+      <wsdl:input message="tns:getLocationCar1HttpGetIn" />
+      <wsdl:output message="tns:getLocationCar1HttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBatteryCharge">
+      <wsdl:input message="tns:getBatteryChargeHttpGetIn" />
+      <wsdl:output message="tns:getBatteryChargeHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="WebService1HttpPost">
+    <wsdl:operation name="SelectCarInfo">
+      <wsdl:input message="tns:SelectCarInfoHttpPostIn" />
+      <wsdl:output message="tns:SelectCarInfoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindNearestCar">
+      <wsdl:input message="tns:FindNearestCarHttpPostIn" />
+      <wsdl:output message="tns:FindNearestCarHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCarInfo">
+      <wsdl:input message="tns:UpdateCarInfoHttpPostIn" />
+      <wsdl:output message="tns:UpdateCarInfoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetCarReserved">
+      <wsdl:input message="tns:SetCarReservedHttpPostIn" />
+      <wsdl:output message="tns:SetCarReservedHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetCarPaired">
+      <wsdl:input message="tns:SetCarPairedHttpPostIn" />
+      <wsdl:output message="tns:SetCarPairedHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getLocationCar1">
+      <wsdl:input message="tns:getLocationCar1HttpPostIn" />
+      <wsdl:output message="tns:getLocationCar1HttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBatteryCharge">
+      <wsdl:input message="tns:getBatteryChargeHttpPostIn" />
+      <wsdl:output message="tns:getBatteryChargeHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebService1Soap" type="tns:WebService1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SelectCarInfo">
+      <soap:operation soapAction="http://tempuri.org/SelectCarInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindNearestCar">
+      <soap:operation soapAction="http://tempuri.org/FindNearestCar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCarInfo">
+      <soap:operation soapAction="http://tempuri.org/UpdateCarInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCarReserved">
+      <soap:operation soapAction="http://tempuri.org/SetCarReserved" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCarPaired">
+      <soap:operation soapAction="http://tempuri.org/SetCarPaired" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLocationCar1">
+      <soap:operation soapAction="http://tempuri.org/getLocationCar1" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBatteryCharge">
+      <soap:operation soapAction="http://tempuri.org/getBatteryCharge" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebService1Soap12" type="tns:WebService1Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SelectCarInfo">
+      <soap12:operation soapAction="http://tempuri.org/SelectCarInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindNearestCar">
+      <soap12:operation soapAction="http://tempuri.org/FindNearestCar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCarInfo">
+      <soap12:operation soapAction="http://tempuri.org/UpdateCarInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCarReserved">
+      <soap12:operation soapAction="http://tempuri.org/SetCarReserved" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCarPaired">
+      <soap12:operation soapAction="http://tempuri.org/SetCarPaired" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLocationCar1">
+      <soap12:operation soapAction="http://tempuri.org/getLocationCar1" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBatteryCharge">
+      <soap12:operation soapAction="http://tempuri.org/getBatteryCharge" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebService1HttpGet" type="tns:WebService1HttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="SelectCarInfo">
+      <http:operation location="/SelectCarInfo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindNearestCar">
+      <http:operation location="/FindNearestCar" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCarInfo">
+      <http:operation location="/UpdateCarInfo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SetCarReserved">
+      <http:operation location="/SetCarReserved" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SetCarPaired">
+      <http:operation location="/SetCarPaired" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="getLocationCar1">
+      <http:operation location="/getLocationCar1" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBatteryCharge">
+      <http:operation location="/getBatteryCharge" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebService1HttpPost" type="tns:WebService1HttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="SelectCarInfo">
+      <http:operation location="/SelectCarInfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindNearestCar">
+      <http:operation location="/FindNearestCar" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCarInfo">
+      <http:operation location="/UpdateCarInfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SetCarReserved">
+      <http:operation location="/SetCarReserved" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SetCarPaired">
+      <http:operation location="/SetCarPaired" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="getLocationCar1">
+      <http:operation location="/getLocationCar1" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBatteryCharge">
+      <http:operation location="/getBatteryCharge" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService1">
+    <wsdl:port name="WebService1Soap" binding="tns:WebService1Soap">
+      <soap:address location="http://localhost:8080/WebService1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebService1Soap12" binding="tns:WebService1Soap12">
+      <soap12:address location="http://localhost:8080/WebService1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebService1HttpGet" binding="tns:WebService1HttpGet">
+      <http:address location="http://localhost:8080/WebService1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebService1HttpPost" binding="tns:WebService1HttpPost">
+      <http:address location="http://localhost:8080/WebService1.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
